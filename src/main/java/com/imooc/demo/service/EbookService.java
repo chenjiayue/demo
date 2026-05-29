@@ -4,6 +4,7 @@ import com.imooc.demo.domain.EbookExample;
 import com.imooc.demo.mapper.EbookMapper;
 import com.imooc.demo.req.EbookReq;
 import com.imooc.demo.resp.EbookResp;
+import com.imooc.demo.utils.CopyUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,12 +23,17 @@ public class EbookService {
         EbookExample.Criteria criteria = ebookExample.createCriteria();
         criteria.andNameLike("%"+req.getName()+"%");
         List<Ebook> ebooksList = ebookMapper.selectByExample(ebookExample);
+
         List<EbookResp> respList = new ArrayList<>();
         for (Ebook ebook : ebooksList) {
-            EbookResp ebookResp = new EbookResp();
-            BeanUtils.copyProperties(ebook, ebookResp);
+            //EbookResp ebookResp = new EbookResp();
+            //BeanUtils.copyProperties(ebook, ebookResp);
+
+            EbookResp ebookResp = CopyUtil.copy(ebook, EbookResp.class);
             respList.add(ebookResp);
         }
-        return respList;
+
+        List<EbookResp> list = CopyUtil.copyList(ebooksList, EbookResp.class);
+        return list;
     }
 }
