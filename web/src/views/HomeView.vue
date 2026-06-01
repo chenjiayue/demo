@@ -4,10 +4,13 @@
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
   </div>
+  <pre>
+     {{ebooks}}
+  </pre>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import {defineComponent, onMounted, ref} from 'vue';
 import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 import axios from 'axios';
 
@@ -15,9 +18,19 @@ export default defineComponent({
   name: 'HomeView',
   setup(){
     console.log("setup");
-    axios.get("http://localhost:8881/ebook/list?name=Spring").then((response) => {
-      console.log(response);
+    const ebooks =ref();
+
+    onMounted(() => {
+      console.log("onMounted")
+      axios.get("http://localhost:8881/ebook/list?name=Spring").then((response) => {
+        const data = response.data;
+        ebooks.value = data.content;
+        console.log(response);
+      });
     })
+    return{
+      ebooks
+    }
   },
   components: {
     HelloWorld,
