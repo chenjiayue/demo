@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "ant-design-vue": "^4.0.0-rc.6",
+    "vue-router": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/vue-router": "^2.0.0"
+  }
+}
