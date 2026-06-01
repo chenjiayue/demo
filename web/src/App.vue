@@ -89,7 +89,7 @@ export default defineComponent({
 <template>
   <a-layout id="components-layout-demo-top-side-2">
     <the-header></the-header>
-    <!--<router-view/>-->
+    <router-view/>
     <the-footer></the-footer>
   </a-layout>
 </template>
