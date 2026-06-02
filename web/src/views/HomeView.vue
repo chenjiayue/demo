@@ -33,8 +33,8 @@ export default defineComponent({
     const ebooks =ref();
 
     onMounted(() => {
-      console.log("onMounted")
-      axios.get("http://localhost:8881/ebook/list?name=Spring").then((response) => {
+      console.log("onMounted333")
+      axios.get(  "/ebook/list?name=Spring").then((response) => {
         const data = response.data;
         ebooks.value = data.content;
         console.log(response);
