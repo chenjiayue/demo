@@ -29,15 +29,15 @@ for (let i = 0; i < 23; i++) {
 export default defineComponent({
   name: 'HomeView',
   setup(){
-    console.log("setup");
+    //console.log("setup");
     const ebooks =ref();
 
     onMounted(() => {
-      console.log("onMounted333")
+      //console.log("onMounted333")
       axios.get(  "/ebook/list?name=Spring").then((response) => {
         const data = response.data;
         ebooks.value = data.content;
-        console.log(response);
+        //console.log(response);
       });
     })
     return{
