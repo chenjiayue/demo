@@ -1,5 +1,5 @@
 <template>
   <div class="about">
-    <h1>中国很强大！！</h1>
+    <h1>the ebook!!!</h1>
   </div>
 </template>
