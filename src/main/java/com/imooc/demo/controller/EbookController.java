@@ -1,13 +1,18 @@
 package com.imooc.demo.controller;
 import com.imooc.demo.domain.Ebook;
 import com.imooc.demo.req.EbookReq;
+import com.imooc.demo.req.EbookQueryReq;
 import com.imooc.demo.resp.CommonResp;
+import com.imooc.demo.resp.EbookQueryResp;
 import com.imooc.demo.resp.EbookResp;
+import com.imooc.demo.resp.PageResp;
 import com.imooc.demo.service.EbookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -28,9 +33,9 @@ public class EbookController {
     //}
 
     @GetMapping("/list")
-    public CommonResp list(EbookReq req){
-        CommonResp<List<EbookResp>> resp = new CommonResp<>();
-        List<EbookResp> list = ebookService.list(req);
+    public CommonResp list(@Valid EbookQueryReq req) {
+        CommonResp<PageResp<EbookQueryResp>> resp = new CommonResp<>();
+        PageResp<EbookQueryResp> list = ebookService.list(req);
         resp.setContent(list);
         return resp;
     }

@@ -1,4 +1,5 @@
-<!--<template>
+<!--
+<template>
   <a-layout>
     <a-layout-sider width="200" style="background: #fff">
       <a-menu
@@ -94,11 +95,11 @@ export default defineComponent({
     const openKeys =  ref();
 
     const level1 =  ref();
-    let categorys: any;
+    //let categorys: any;
     /**
      * 查询所有分类
      **/
-    const handleQueryCategory = () => {
+    /*const handleQueryCategory = () => {
       axios.get("/category/all").then((response) => {
         const data = response.data;
         if (data.success) {
@@ -118,7 +119,7 @@ export default defineComponent({
           message.error(data.message);
         }
       });
-    };
+    };*/
 
     const isShowWelcome = ref(true);
     let categoryId2 = 0;
@@ -150,8 +151,8 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      handleQueryCategory();
-      // handleQueryEbook();
+      //handleQueryCategory();
+       handleQueryEbook();
     });
 
     return {
@@ -189,7 +190,8 @@ export default defineComponent({
   border-radius: 8%;
   margin: 5px 0;
 }
-</style>-->
+</style>
+-->
 
 <template>
   <div class="home">
@@ -226,7 +228,7 @@ export default defineComponent({
     const ebooks =ref();
     onMounted(() => {
       //console.log("onMounted333")
-      axios.get(  "/ebook/list?name=Spring").then((response) => {
+      axios.get(  "/ebook/list?name=入门教程").then((response) => {
         const data = response.data;
         ebooks.value = data.content;
         //console.log(response);
