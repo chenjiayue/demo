@@ -2,15 +2,14 @@ package com.imooc.demo.controller;
 import com.imooc.demo.domain.Ebook;
 import com.imooc.demo.req.EbookReq;
 import com.imooc.demo.req.EbookQueryReq;
+import com.imooc.demo.req.EbookSaveReq;
 import com.imooc.demo.resp.CommonResp;
 import com.imooc.demo.resp.EbookQueryResp;
 import com.imooc.demo.resp.EbookResp;
 import com.imooc.demo.resp.PageResp;
 import com.imooc.demo.service.EbookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -39,4 +38,14 @@ public class EbookController {
         resp.setContent(list);
         return resp;
     }
+
+    @PostMapping("/save")
+    public CommonResp save(@RequestBody EbookSaveReq req) {
+        CommonResp resp = new CommonResp<>();
+        ebookService.save(req);
+        return resp;
+    }
+
+
+
 }
