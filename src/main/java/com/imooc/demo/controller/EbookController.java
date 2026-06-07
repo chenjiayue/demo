@@ -8,6 +8,7 @@ import com.imooc.demo.resp.EbookQueryResp;
 import com.imooc.demo.resp.EbookResp;
 import com.imooc.demo.resp.PageResp;
 import com.imooc.demo.service.EbookService;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,6 +44,13 @@ public class EbookController {
     public CommonResp save(@RequestBody EbookSaveReq req) {
         CommonResp resp = new CommonResp<>();
         ebookService.save(req);
+        return resp;
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public CommonResp delete(@PathVariable Long id) {
+        CommonResp resp = new CommonResp<>();
+        ebookService.delete(id);
         return resp;
     }
 
