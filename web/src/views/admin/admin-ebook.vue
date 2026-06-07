@@ -21,7 +21,7 @@
           </a-form-item>
         </a-form>
       </p>
-      <a-table
+<!--      <a-table
           :columns="columns"
           :row-key="(record:any) => record.id"
           :data-source="ebooks"
@@ -57,11 +57,11 @@
             </a-popconfirm>
           </a-space>
         </template>
-      </a-table>
+      </a-table>-->
     </a-layout-content>
   </a-layout>
 
-  <a-modal
+<!--  <a-modal
       title="电子书表单"
       v-model:visible="modalVisible"
       :confirm-loading="modalLoading"
@@ -85,7 +85,7 @@
         <a-input v-model:value="ebook.description" type="textarea" />
       </a-form-item>
     </a-form>
-  </a-modal>
+  </a-modal>-->
 </template>
 
 <script lang="ts">
@@ -318,8 +318,12 @@ img {
 }
 </style>
 
+
+
+
 <!--
-&lt;!&ndash;
+
+
 <template>
   <a-layout-footer style="text-align: center">
     页面管理
@@ -334,7 +338,7 @@ export default defineComponent({
     msg: String,
   },
 });
-</script>&ndash;&gt;
+</script>
 <template>
   <a-layout>
     <a-layout-content
@@ -388,8 +392,8 @@ export default defineComponent({
       v-model:visible="modalVisible"
       :confirm-loading="modalLoading"
       @ok="handleModalOk"
-  >&ndash;&gt;
-&lt;!&ndash;    <a-form :model="ebook" :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }">
+  >
+    <a-form :model="ebook" :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }">
       <a-form-item label="封面">
         <a-input v-model:value="ebook.cover" />
       </a-form-item>
@@ -406,8 +410,8 @@ export default defineComponent({
       <a-form-item label="描述">
         <a-input v-model:value="ebook.description" type="textarea" />
       </a-form-item>
-    </a-form>&ndash;&gt;
-&lt;!&ndash;  </a-modal>&ndash;&gt;
+    </a-form>
+  </a-modal>&ndash;&gt;
 
 </template>
 

@@ -9,6 +9,7 @@ import com.imooc.demo.req.EbookSaveReq;
 import com.imooc.demo.resp.EbookQueryResp;
 import com.imooc.demo.resp.PageResp;
 import com.imooc.demo.utils.CopyUtil;
+import com.imooc.demo.utils.SnowFlake;
 import org.slf4j.Logger;
 
 import org.springframework.stereotype.Service;
@@ -26,6 +27,9 @@ public class EbookService {
 
     @Resource
     private EbookMapper ebookMapper;
+
+    @Resource
+    private SnowFlake snowFlake;
 
     public PageResp<EbookQueryResp> list(EbookQueryReq req) {
         EbookExample ebookExample = new EbookExample();
@@ -85,6 +89,7 @@ public class EbookService {
     public void save(EbookSaveReq req) {
         Ebook ebook = CopyUtil.copy(req,Ebook.class);
         if (ObjectUtils.isEmpty(ebook.getId())) {
+            ebook.setId(snowFlake.nextId());
             ebookMapper.insert(ebook);
         } else {
             ebookMapper.updateByPrimaryKey(ebook);
