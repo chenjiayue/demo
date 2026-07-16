@@ -1,0 +1,6 @@
+GET http://localhost:8881/api/item
+Accept: application/json
+
+#gtr 用来生成测试接口
+#ptr 不带参数的post请求
+#ptrp 带参数的post请求
