@@ -1,5 +1,0 @@
-<template>
-  <div class="about">
-    <h1>中国很强大！！</h1>
-  </div>
-</template>

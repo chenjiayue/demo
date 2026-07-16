@@ -19,7 +19,7 @@ public class ControllerExceptionHandler {
 
     /**
      * 校验异常统一处理
-     * @param e
+     * @param
      * @return
      */
     @ExceptionHandler(value = BindException.class)
