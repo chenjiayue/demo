@@ -43,6 +43,13 @@ public class Application {
 
     private static final Logger LOG = LoggerFactory.getLogger(Application.class);
 
+    /**
+     * Spring Boot应用程序入口方法
+     *
+     * 启动Spring Boot应用并输出访问地址信息，包括根地址和登录接口地址
+     *
+     * @param args 命令行参数数组
+     */
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
         Environment env = context.getEnvironment();

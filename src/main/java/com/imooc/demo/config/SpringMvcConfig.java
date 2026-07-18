@@ -21,6 +21,8 @@ public class SpringMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns(
+                        "/demo/**",
+                        "/hello/**",
                         "/test/**",
                         "/redis/**",
                         "/user/login",
@@ -31,7 +33,6 @@ public class SpringMvcConfig implements WebMvcConfigurer {
                         "/doc/find-content/**",
                         "/ebook-snapshot/**"
                 );
-
         registry.addInterceptor(actionInterceptor)
                 .addPathPatterns(
                         "/*/save",

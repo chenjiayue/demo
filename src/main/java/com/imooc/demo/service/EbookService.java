@@ -32,8 +32,9 @@ public class EbookService {
     private SnowFlake snowFlake;
 
     public PageResp<EbookQueryResp> list(EbookQueryReq req) {
+
         EbookExample ebookExample = new EbookExample();
-        EbookExample.Criteria criteria = ebookExample.createCriteria();
+        EbookExample.Criteria criteria = ebookExample.createCriteria(); //相当于where查询条件
         if (!ObjectUtils.isEmpty(req.getName())) {
             criteria.andNameLike("%" + req.getName() + "%");
         }
@@ -45,47 +46,13 @@ public class EbookService {
         LOG.info("总行数：{}", pageInfo.getTotal());
         LOG.info("总页数：{}", pageInfo.getPages());
 
-        // List<EbookResp> respList = new ArrayList<>();
-        // for (Ebook ebook : ebookList) {
-        //     // EbookResp ebookResp = new EbookResp();
-        //     // BeanUtils.copyProperties(ebook, ebookResp);
-        //     // 对象复制
-        //     EbookResp ebookResp = CopyUtil.copy(ebook, EbookResp.class);
-        //
-        //     respList.add(ebookResp);
-        // }
-        // 列表复制
         List<EbookQueryResp> list = CopyUtil.copyList(ebookList, EbookQueryResp.class);
         PageResp<EbookQueryResp> pageResp = new PageResp();
         pageResp.setTotal(pageInfo.getTotal());
         pageResp.setList(list);
         return pageResp;
     }
-    /*public List<EbookResp> list(EbookReq req){
-        EbookExample ebookExample = new EbookExample();
-        EbookExample.Criteria criteria = ebookExample.createCriteria();
-        if (!ObjectUtils.isEmpty(req.getName())){
-            criteria.andNameLike("%"+req.getName()+"%");
-        }
-        PageHelper.startPage(1,3);
-        List<Ebook> ebooksList = ebookMapper.selectByExample(ebookExample);
-        PageInfo<Ebook> pageInfo = new PageInfo<>(ebooksList);
-        LOG.info("总行数:{}",pageInfo.getTotal());
-        LOG.info("总页数:{}",pageInfo.getPages());
-        List<EbookQueryResp> list = CopyUtil.copyList(ebooksList, EbookQueryResp.class);
-        PageResp<EbookQueryResp> pageResp = new PageResp();
-        pageResp.setTotal(pageInfo.getTotal());
-        //return pageResp.setList(list);
-       *//* List<EbookResp> respList = new ArrayList<>();
-        for (Ebook ebook : ebooksList) {
-            //EbookResp ebookResp = new EbookResp();
-            //BeanUtils.copyProperties(ebook, ebookResp);
-            EbookResp ebookResp = CopyUtil.copy(ebook, EbookResp.class);
-            respList.add(ebookResp);
-        }*//*
-        //List<EbookResp> list = CopyUtil.copyList(ebooksList, EbookResp.class);
-        //return list;
-    }*/
+
     public void save(EbookSaveReq req) {
         Ebook ebook = CopyUtil.copy(req,Ebook.class);
         if (ObjectUtils.isEmpty(ebook.getId())) {
@@ -97,8 +64,6 @@ public class EbookService {
     }
     public void delete(Long id){
         ebookMapper.deleteByPrimaryKey(id);
-
-
     }
 }
 
