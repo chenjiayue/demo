@@ -118,6 +118,8 @@ export default defineComponent({
       onMounted(() => {
         console.log("onMounted");
         axios.get("http://localhost:8888/ebook/list?name=入门教程")
+        //axios.get(process.env.VUE_APP_SERVER + "ebook/list?name=入门教程")
+        //axios.get("/ebook/list?name=入门教程")
             .then((response) => {
               const data = response.data;
               console.log("完整响应数据：", data);
