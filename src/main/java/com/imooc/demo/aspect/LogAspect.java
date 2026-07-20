@@ -31,6 +31,7 @@ public class LogAspect {
     private final static Logger LOG = LoggerFactory.getLogger(LogAspect.class);
 
     /** 定义一个切点 */
+    //找到所有controller里面的方法和方法参数
     @Pointcut("execution(public * com.imooc.*.controller..*Controller.*(..))")
     public void controllerPointcut() {}
 
@@ -75,6 +76,7 @@ public class LogAspect {
         PropertyPreFilters filters = new PropertyPreFilters();
         PropertyPreFilters.MySimplePropertyPreFilter excludefilter = filters.addFilter();
         excludefilter.addExcludes(excludeProperties);
+        //pom依赖注入人，引入fastjson包，并引入logback-spring.xml文件，并配置logback-spring.xml文件，并配置logback-spring.xml文件，并配置logback-spring.xml文件，并配置logback-spring.xml文件，并配置logback-spring.xml文件，并配置logback-spring.xml文件，并配置logback-spring.xml文件，并配置logback-spring.xml文件，
         LOG.info("请求参数: {}", JSONObject.toJSONString(arguments, excludefilter));
     }
 

@@ -7,9 +7,15 @@
         v-model:selectedKeys="selectedKeys1"
         :style="{ lineHeight: '64px' }"
     >
-      <a-menu-item key="1" style="left: 150px">nav 1</a-menu-item>
-      <a-menu-item key="2" style="left: 150px">nav 2</a-menu-item>
-      <a-menu-item key="3" style="left: 150px">nav 3</a-menu-item>
+      <a-menu-item key="/" style="left: 150px">
+        <router-link to="/">首页</router-link>
+      </a-menu-item>
+      <a-menu-item key="/admin/ebook" style="left: 150px">
+        <router-link to="/admin/ebook">电子书管理</router-link>
+      </a-menu-item>
+      <a-menu-item key="/about" style="left: 150px">
+        <router-link to="/about">关于我们</router-link>
+      </a-menu-item>
     </a-menu>
   </a-layout-header>
 </template>
